@@ -3,6 +3,7 @@
 source ./.venv/bin/activate # WRITE THE PATH TO YOUR ENVIROMENT
 
 corpus=ML_MTCONAN_KN
+export DEVICE="cuda:0" # GPU to use
 
 export DATA_FOLD=./data/
 export CORPUS=${corpus}

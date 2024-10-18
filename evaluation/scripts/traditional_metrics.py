@@ -65,7 +65,7 @@ def compute_metrics(labels, predictions):
         result["model"]= model_generation_type
         result['rougeL'] = round(rouge.compute(predictions=predictions, references=labels, use_stemmer=True)['rougeL'],4)
         result["bleu"] = round(bleu.compute(predictions=predictions, references=labels)["bleu"],4)
-        result["bertscore"] = round(np.mean(bertscore.compute(predictions=predictions, references=labels, model_type = "bert-base-multilingual-cased", device = "cuda:0")["f1"]),4)
+        result["bertscore"] = round(np.mean(bertscore.compute(predictions=predictions, references=labels, model_type = "bert-base-multilingual-cased", device = selected_device)["f1"]),4)
         prediction_lens = [len(pred.split()) for pred in predictions]
         result["gen_len"] = np.mean(prediction_lens)
 
@@ -78,7 +78,7 @@ def permutations(elements):
             return(np.mean(similarities)) 
         else:
             rest = elements[i+1:]
-            result = bertscore.compute(predictions=[el1]*len(rest), references=rest, model_type = "bert-base-multilingual-cased", device = "cuda:0")["f1"]
+            result = bertscore.compute(predictions=[el1]*len(rest), references=rest, model_type = "bert-base-multilingual-cased", device =selected_device)["f1"]
             similarities+=result 
 
 if __name__ == "__main__":
@@ -88,6 +88,7 @@ if __name__ == "__main__":
     generation_folder = os.environ.get('GEN_FOLD')
     save_folder = os.environ.get('SAVE_FOLD')
     corpus = os.environ.get('CORPUS')
+    selected_device = os.environ.get('DEVICE')
     generated_texts = os.popen(f'ls {generation_folder} | grep "csv"').read().split()
 
     train = pd.read_csv(data_folder+f"{corpus}_Train_Set.csv")

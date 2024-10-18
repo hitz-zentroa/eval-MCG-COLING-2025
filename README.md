@@ -14,7 +14,7 @@
 
 This repository contains the evaluation files for the MCG-COLING-2025 shared task. It provides two methods of evaluation: 
 - **Traditional Metrics**: Evaluation using ROUGE-L (Lin, 2024), BLEU (Papineni et al., 2002), BERTScore (Zhang et al., 2020) and Novelty (Wang and Wan, 2013).
-- **LLM evaluator**: Evaluation using the JudgeLM model as decribed in Zubiaga et al. (2024). 
+- **LLM evaluator**: Evaluation using the JudgeLM (Zhu et al., 2023) model as decribed in Zubiaga et al. (2024). 
 
 Once the evaluations are performed, the results can be analyzed using the provided Python notebook to rank the models based on their performance.
 
@@ -37,6 +37,8 @@ Once the evaluations are performed, the results can be analyzed using the provid
 - **/generate**: This folder contains the generated output files for evaluation.
   - `system1.csv`: Example of the file format for evaluation.
   - `system2.csv`: Example of the file format for evaluation.
+
+- `requirements.txt`: Lists the Python packages needed to run the project.
   
 ## Instructions for Use
 
@@ -48,11 +50,9 @@ Ensure your generated files are placed in the `generate` folder. These files sho
 1. **Run Traditional Metrics Evaluation**  
   Run the following command to execute traditional metrics evaluation:
    ```bash
-   ./evaluation/bash/traditional_metrics.sh
+   ./evaluation/bash/compute_traditional_metrics.sh
 
-In this file, only the first line of the code should be edited. Specifically, modify the line `source ./.venv/bin/activate` to point to the path of your own environment.
-
-params=7
+In this file, only the first line of the code should be edited. Specifically, modify the line `source ./.venv/bin/activate` to point to the path of your own environment. Additionally the `DEVICE` variable can be modified to choose the unit (CPU/GPU) on which the metrics will be calculated.
    
 2. **LLM Evaluator**  
    For JudgeLM model evaluation, execute the following command:
@@ -64,7 +64,7 @@ Once again, only the first line of the code should be edited. Specifically, modi
 Additionally, you can change the variable `params` to adjust the size of the JudgeLM model. There are three available options: `7`, `13`, or `33`, referring to how many billion parameters the model has. Please note that each size will require a different amount of GPU memory.
 
 ### Step 3: Analyze Results
-Once the evaluations are complete, open the `Rank_models.ipynb` file in Jupyter Notebook. This notebook allows you to visualize the results and rank the models based on their performance.
+Once the evaluations are complete, open the `Rank_models.ipynb` file in Jupyter Notebook. This notebook allows you to visualize the results and rank the models based on their performance. If you don't have Jupyter Notebook installed, you can easily run the notebook using Google Colab.
 
 ## Dependencies
 
@@ -72,10 +72,10 @@ This project requires the following dependencies:
 
 - JudgeLM's dependencies are outlined in the [JudgeLM GitHub repository](https://github.com/baaivision/JudgeLM).
 
-Additionally, you should install the following Python packages:
+Additionally, you should execute the following command to install the required Python packages:
 
 ```bash
-pip install numpy pandas json os plotly tqdm itertools
+pip install -r requirements.txt
 ```
 
 ## References
@@ -86,6 +86,16 @@ pip install numpy pandas json os plotly tqdm itertools
       author={Irune Zubiaga and Aitor Soroa and Rodrigo Agerri},
       year={2024},
       booktitle={Findings of EMNLP} 
+}
+
+@misc{zhu2023judgelmfinetunedlargelanguage,
+      title={JudgeLM: Fine-tuned Large Language Models are Scalable Judges}, 
+      author={Lianghui Zhu and Xinggang Wang and Xinlong Wang},
+      year={2023},
+      eprint={2310.17631},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2310.17631}, 
 }
 
 @inproceedings{ijcai2018p618,
