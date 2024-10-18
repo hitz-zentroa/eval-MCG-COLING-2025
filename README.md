@@ -12,9 +12,9 @@
 </a>
 </p>
 
-This repository contains the evaluation files for the MCG-COLING-2025 shared task. It provides two methods of evaluation: 
+This repository contains the evaluation files for the [MCG-COLING-2025 shared task](https://sites.google.com/view/multilang-counterspeech-gen/shared-task). It provides two methods of evaluation: 
 - **Traditional Metrics**: Evaluation using ROUGE-L (Lin, 2024), BLEU (Papineni et al., 2002), BERTScore (Zhang et al., 2020) and Novelty (Wang and Wan, 2013).
-- **LLM evaluator**: Evaluation using the JudgeLM (Zhu et al., 2023) model as decribed in Zubiaga et al. (2024). 
+- **LLM evaluator**: Evaluation using the JudgeLM (Zhu et al., 2023) model as decribed in [Zubiaga et al. (2024)](https://arxiv.org/abs/2406.15227).
 
 Once the evaluations are performed, the results can be analyzed using the provided Python notebook to rank the models based on their performance.
 
@@ -55,6 +55,7 @@ Ensure your generated files are placed in the `generate` folder. These files sho
 In this file, only the first line of the code should be edited. Specifically, modify the line `source ./.venv/bin/activate` to point to the path of your own environment. Additionally the `DEVICE` variable can be modified to choose the unit (CPU/GPU) on which the metrics will be calculated.
    
 2. **LLM Evaluator**  
+
    For JudgeLM model evaluation, execute the following command:
    ```bash
    ./evaluation/bash/judge_full_pipeline.sh
