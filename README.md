@@ -45,6 +45,8 @@ Once the evaluations are performed, the results can be analyzed using the provid
 ### Step 1: Prepare Generated Files
 Ensure your generated files are placed in the `generate` folder. These files should follow the CSV format as demonstrated in `system1.csv` and `system2.csv`.
 
+As illustrated in the aforementioned example files, the code assumes that the generated CNs are aligned with the reference CNs (referred to as Labels in the files). However, the CSV files submitted by participants only need to contain the MTCONAN_ID and the generated CNs. The reference CNs will be added by the organizers during the evaluation process, as these references will not be released until the evaluation campaign concludes.
+
 ### Step 2: Execute Evaluations
 
 1. **Run Traditional Metrics Evaluation**  
