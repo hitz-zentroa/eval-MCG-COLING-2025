@@ -62,9 +62,9 @@ In this file, only the first line of the code should be edited. Specifically, mo
    ```bash
    ./evaluation/bash/judge_full_pipeline.sh
   
-Once again, only the first line of the code should be edited. Specifically, modify the line `source ./.venv/bin/activate` to point to the path of your own environment. 
+For english, spanish and italian only the first line of the code should be edited. Specifically, modify the line `source ./.venv/bin/activate` to point to the path of your own environment. Additionally, you can change the variable `params` to adjust the size of the JudgeLM model. There are three available options: `7`, `13`, or `33`, referring to how many billion parameters the model has. Please note that each size will require a different amount of GPU memory.
 
-Additionally, you can change the variable `params` to adjust the size of the JudgeLM model. There are three available options: `7`, `13`, or `33`, referring to how many billion parameters the model has. Please note that each size will require a different amount of GPU memory.
+For euskera, you should modify the line `source ./.venv/bin/activate` to point to the path of your own environment and change the variable `--model-path` in the line of code 62 to `HiTZ/judge-eus`. This is a 8B parameter judge model for euskera.
 
 ### Step 3: Analyze Results
 Once the evaluations are complete, open the `Rank_models.ipynb` file in Jupyter Notebook. This notebook allows you to visualize the results and rank the models based on their performance. If you don't have Jupyter Notebook installed, you can easily run the notebook using Google Colab.
